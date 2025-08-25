@@ -6,16 +6,19 @@ This repo is a work in progress...
 
 - [X] Gruvbox Dark
 - [X] Dracula
-- [ ] Dark One
+- [X] One Dark
 
-<br>
-
-### Gruvbox Dark
-![Gruvbox-Dark](./examples/gruv-dark.png)
-
-    @import url('https://derektata.github.io/jellyfin-themes/gruvbox-dark.css')
-    
 ### Dracula
-![Dracula](./examples/dracula.png)
+<img src="./examples/dracula.png" alt="Dracula" width="600">
 
     @import url('https://derektata.github.io/jellyfin-themes/dracula.css')
+
+### Gruvbox Dark
+<img src="./examples/gruv-dark.png" alt="Gruvbox Dark" width="600">
+
+    @import url('https://derektata.github.io/jellyfin-themes/gruvbox-dark.css')
+
+### One Dark
+<img src="./examples/one-dark.png" alt="One Dark" width="600">
+
+    @import url('https://derektata.github.io/jellyfin-themes/one-dark.css')
