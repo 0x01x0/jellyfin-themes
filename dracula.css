@@ -1,110 +1,237 @@
-/* 
-    ////////////////////////////////////////////////////////////////////
-        Import Custom Fonts
-    ////////////////////////////////////////////////////////////////////
-*/
+/* ////////////////////////////////////////////////////////////////////
+//  Dracula Jellyfin Theme
+/////////////////////////////////////////////////////////////////// */
 
-@import url('https://fonts.googleapis.com/css2?family=Fira+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+/* -------------------------------------------------------
+    Import Custom Font
+-------------------------------------------------------- */
+@import url("https://fonts.googleapis.com/css2?family=Fira+Sans:wght@400;500;700&display=swap");
+
+:root {
+    /* Background scale */
+    --color-bg0: #282a36; /* background */
+    --color-bg1: #44475a; /* current line / panels */
+    --dark-color-bg_s: #21222c; /* deeper background (terminal black) */
+
+    /* Foreground & neutrals */
+    --color-fg: #f8f8f2; /* foreground (white) */
+    --color-fg-muted: #f8f8f299; /* muted text */
+    --color-comment: #6272a4; /* comment / subtle accents */
+
+    /* Colors */
+    --color-red: #ff6e6e;
+    --dark-color-red: #ff5555;
+
+    --color-green: #69ff94;
+    --dark-color-green: #50fa7b;
+
+    --color-yellow: #ffffa5;
+    --dark-color-yellow: #f1fa8c;
+
+    --color-blue: #a4ffff; /* cyan in Dracula palette, used for play/links */
+    --dark-color-blue: #8be9fd;
+
+    --color-purple: #d6acff; /* Dracula “purple” (often used as blue in UIs) */
+    --dark-color-purple: #bd93f9;
+
+    --color-pink: #ff92df;
+    --dark-color-pink: #ff79c6;
+
+    --color-orange: #ffcc95;
+    --dark-color-orange: #ffb86c;
+
+    /* Convenience aliases */
+    --color-bg: var(--color-bg0);
+    --color-panel: var(--color-bg1);
+    --color-accent: var(--color-fg);
+    --color-highlight: #ffffff;
+    --color-muted: var(--color-fg-muted);
+    --color-danger: var(--color-red);
+    --color-new: var(--color-green);
+    --color-play: var(--color-blue);
+    --color-channel: var(--color-comment);
+    --color-program: var(--color-bg1);
+    --color-sports: var(--dark-color-purple); /* sports program cell bg */
+    --color-news: var(--dark-color-green); /* news program cell bg */
+    --color-empty: var(--dark-color-bg_s);
+    --color-text: var(--color-fg);
+    --color-scrollbar: var(--color-purple);
+    --color-channel-card: var(--dark-color-bg_s);
+}
 
 html {
-    font-family: 'Fira Sans';
+    font-family: "Fira Sans", sans-serif;
+    background-color: var(--color-bg);
+    color: var(--color-text);
 }
 
-/* 
-    ////////////////////////////////////////////////////////////////////
-        Minimalist Login Form
-    ////////////////////////////////////////////////////////////////////
-*/
-
-/* Narrow the login form */
-#loginPage .readOnlyContent, #loginPage form {max-width: 22em;}
-
-/* Hide "please login" text, margin is to prevent login form moving too far up */
-#loginPage h1 {display: none}
-#loginPage .padded-left.padded-right.padded-bottom-page {margin-top: 50px}
-
-/* Hide "manual" and "forgot" buttons */
-#loginPage .raised.cancel.block.btnManual.emby-button {display: none}
-#loginPage .raised.cancel.block.btnForgotPassword.emby-button {display: none}
-
-/* 
-    ////////////////////////////////////////////////////////////////////
-        Main Colors
-    ////////////////////////////////////////////////////////////////////
-*/
-
- /* Top Left Icons */
-span.material-icons.arrow_back, span.material-icons.home, span.material-icons.menu {
-    color: #f8f8f2;
+/* -------------------------------------------------------
+    Login Page Tweaks
+-------------------------------------------------------- */
+#loginPage .readOnlyContent,
+#loginPage form {
+    max-width: 22em;
+}
+#loginPage h1 {
+    display: none;
+}
+#loginPage .padded-left.padded-right.padded-bottom-page {
+    margin-top: 50px;
+}
+#loginPage .raised.cancel.block.btnManual.emby-button,
+#loginPage .raised.cancel.block.btnForgotPassword.emby-button {
+    display: none;
 }
 
-/* Top Right Icons */
-span.material-icons.sync_disabled, span.material-icons.sync_enabled, span.material-icons.cast, span.material-icons.search, span.material-icons.person {
-  color: #f8f8f2;
+/* -------------------------------------------------------
+    General Interface Colors
+-------------------------------------------------------- */
+.backgroundContainer,
+.dialog {
+    background-color: var(--color-bg) !important;
+}
+.skinHeader,
+.mainDrawer,
+.emby-input,
+.emby-textarea,
+.emby-select,
+.navMenuOption-selected,
+.cardBox,
+.paperList {
+    background: var(--color-panel) !important;
+}
+.mainDrawer-scrollContainer,
+.dashboardGeneralForm {
+    color: var(--color-accent);
 }
 
- /* Background Color */
-.backgroundContainer, .dialog, html { background-color: #282a36; }
-
- /* Drawer Color */
-.skinHeader, .mainDrawer, .emby-input, .emby-textarea, .emby-select, .navMenuOption-selected, .cardBox, .paperList { background: #282828; }
-
- /* Console Panel Color */
-.mainDrawer-scrollContainer { color: #f8f8f2; }
-
- /* General Page Custom Color */
-.dashboardGeneralForm { color: #f8f8f2; }
-
-/* Record/Record Series Icon Color */
-span.material-icons.recordingIcon.fiber_manual_record, span.material-icons.recordingIcon.fiber_smart_record {
-  color: #ff5555;
+/* Icons */
+span.material-icons {
+    color: var(--color-accent);
 }
 
-/* 
-    ////////////////////////////////////////////////////////////////////
-        Guide Colors
-    ////////////////////////////////////////////////////////////////////
-*/
+/* Record Icons */
+span.material-icons.recordingIcon.fiber_manual_record,
+span.material-icons.recordingIcon.fiber_smart_record {
+    color: var(--color-danger);
+}
 
- /* Guide - Date Active Color */
+/* -------------------------------------------------------
+    Guide Styling
+-------------------------------------------------------- */
 button.emby-tab-button.guide-date-tab-button.emby-button.emby-tab-button-active {
-    color: #fcfcfc;
+    color: var(--color-highlight);
 }
-
- /* Guide - Date Color */
 button.emby-tab-button.guide-date-tab-button.emby-button {
-    color: #fcfcfc75;
+    color: var(--color-muted);
 }
 
- /* Guide - New Notification Color */
-span.newTvProgram.guideProgramIndicator, div.mediaInfoProgramAttribute.mediaInfoItem.newTvProgram { 
-    background-color: #50fa7b;
-    color: #44475a;
+span.newTvProgram.guideProgramIndicator,
+div.mediaInfoProgramAttribute.mediaInfoItem.newTvProgram {
+    background-color: var(--color-new);
+    color: var(--color-bg);
 }
 
- /* Guide - Play Button Color */
 button.raised.btnPlay.block.formDialogFooterItem.button-submit.emby-button {
-   background-color: #8be9fd; 
-   color: #44475a;
+    background-color: var(--color-play);
+    color: var(--color-bg);
 }
 
- /* Guide - Channel Cell Color */
 button.guide-channelHeaderCell.itemAction {
-    background-color: #6272a4;
+    background-color: var(--color-channel);
+    color: var(--color-text);
 }
 
- /* Guide - Inactive Program Color */
 button.programCell.itemAction {
-    background-color: #44475a;
+    background-color: var(--color-program);
+    color: var(--color-highlight);
+    font-weight: 500;
 }
 
- /* Guide - Empty Program Color */
+button.programCell.itemAction.programCell-sports {
+    background-color: var(--color-sports) !important;
+}
+
+button.programCell.itemAction.programCell-news {
+    background-color: var(--color-news) !important;
+    color: var(--dark-color-bg_s);
+}
+
+button.programCell.itemAction.programCell-news span.programSecondaryTitle {
+    color: var(--color-comment);
+}
+
 div.channelPrograms {
-    background-color: #1d202175;
+    background-color: var(--color-empty);
 }
 
-/*Size episode preview images in a more compact way*/
-.listItemImage.listItemImage-large.itemAction.lazy {height: 110px;}
-.listItem-content {height: 115px;}
-.secondary.listItem-overview.listItemBodyText {height: 61px; margin: 0;}
+/* -------------------------------------------------------
+    Scrollbars
+-------------------------------------------------------- */
+::-webkit-scrollbar {
+    width: 10px;
+}
+::-webkit-scrollbar-track {
+    background: var(--color-bg);
+}
+::-webkit-scrollbar-thumb {
+    background-color: var(--color-scrollbar);
+    border-radius: 6px;
+}
 
+/* -------------------------------------------------------
+    Buttons & Transitions
+-------------------------------------------------------- */
+.emby-button,
+button {
+    transition:
+        filter 0.2s ease-in-out,
+        background-color 0.3s ease;
+}
+.emby-button:hover,
+button:hover {
+    filter: brightness(1.2);
+}
+
+/* -------------------------------------------------------
+    Compact List Previews
+-------------------------------------------------------- */
+.listItemImage.listItemImage-large.itemAction.lazy {
+    height: 110px;
+}
+.listItem-content {
+    height: 115px;
+}
+.secondary.listItem-overview.listItemBodyText {
+    height: 61px;
+    margin: 0;
+}
+
+/* -------------------------------------------------------
+    Live TV Channel Card Styling
+-------------------------------------------------------- */
+.cardImageContainer {
+    background-color: var(--color-channel-card) !important;
+    color: var(--color-text) !important;
+}
+
+.cardImageContainer .cardText,
+.cardImageContainer .cardText-secondary,
+.cardImageContainer .cardText-primary {
+    color: var(--color-text) !important;
+}
+
+.cardImageContainer:hover {
+    filter: brightness(1.1);
+}
+
+/* -------------------------------------------------------
+    Smooth Global Transitions
+-------------------------------------------------------- */
+*,
+*::before,
+*::after {
+    transition:
+        background-color 0.3s ease,
+        color 0.3s ease;
+}
