@@ -1,0 +1,227 @@
+/* ////////////////////////////////////////////////////////////////////
+//  Tokyo Jellyfin Theme
+/////////////////////////////////////////////////////////////////// */
+
+/* -------------------------------------------------------
+    Import Custom Font
+-------------------------------------------------------- */
+@import url("https://fonts.googleapis.com/css2?family=Fira+Sans:wght@400;500;700&display=swap");
+
+:root {
+    /* Background scale */
+    --color-bg0: #1a1b26;
+    --color-bg1: #16161e;
+    --color-bg2: #0f0f14;
+    --dark-color-bg_s: #414868;
+
+    /* Foreground & Neutrals */
+    --color-fg: #c0caf5;
+    --light-color-fg: #d5dfff;
+    --color-fg-muted: #a9b1d699;
+    --color-comment: #565f89;
+
+    /* Colors */
+    --color-red: #f7768e;
+    --light-color-red: #ff9cac;
+    --dark-color-red: #c53b53;
+
+    --color-green: #9ece6a;
+    --light-color-green: #b9f27c;
+    --dark-color-green: #7aa36f;
+
+    --color-yellow: #e0af68;
+    --light-color-yellow: #ffe38f;
+    --dark-color-yellow: #caa56a;
+
+    --color-blue: #7aa2f7;
+    --light-color-blue: #a4b9ff;
+    --dark-color-blue: #3b8eea;
+
+    --color-purple: #bb9af7;
+    --light-color-purple: #d5bfff;
+    --dark-color-purple: #8c6fdc;
+
+    --color-pink: #ff79c6;
+    --light-color-pink: #ffb2e8;
+    --dark-color-pink: #d55f9a;
+
+    --color-aqua: #7dcfff;
+    --light-color-aqua: #b4f1ff;
+    --dark-color-aqua: #2ac3de;
+
+    --color-orange: #e0af68;
+    --light-color-orange: #ffc387;
+    --dark-color-orange: #b07d48;
+
+    /* Aliases */
+    --color-bg: var(--color-bg0);
+    --color-panel: var(--color-bg1);
+    --color-panel-deep: var(--color-bg2);
+    --color-accent: var(--color-fg);
+    --color-highlight: var(--light-color-fg);
+    --color-muted: var(--color-fg-muted);
+    --color-danger: var(--color-red);
+    --color-new: var(--dark-color-green);
+    --color-play: var(--color-blue);
+    --color-channel: var(--dark-color-bg_s);
+    --color-program: var(--color-panel);
+    --color-sports: var(--color-purple);
+    --color-news: var(--color-green);
+    --color-empty: var(--dark-color-bg_s);
+    --color-text: var(--color-fg);
+    --color-scrollbar: var(--color-purple);
+    --color-channel-card: var(--dark-color-bg_s);
+}
+
+html {
+    font-family: "Fira Sans", sans-serif;
+    background-color: var(--color-bg);
+    color: var(--color-text);
+}
+
+#loginPage .readOnlyContent,
+#loginPage form {
+    max-width: 22em;
+}
+#loginPage h1 {
+    display: none;
+}
+#loginPage .padded-left.padded-right.padded-bottom-page {
+    margin-top: 50px;
+}
+#loginPage .raised.cancel.block.btnManual.emby-button,
+#loginPage .raised.cancel.block.btnForgotPassword.emby-button {
+    display: none;
+}
+
+.backgroundContainer,
+.dialog {
+    background-color: var(--color-bg) !important;
+}
+.skinHeader,
+.mainDrawer,
+.emby-input,
+.emby-textarea,
+.emby-select,
+.navMenuOption-selected,
+.cardBox,
+.paperList {
+    background: var(--color-panel) !important;
+}
+.mainDrawer-scrollContainer,
+.dashboardGeneralForm {
+    color: var(--color-accent);
+}
+
+span.material-icons {
+    color: var(--color-accent);
+}
+
+span.material-icons.recordingIcon.fiber_manual_record,
+span.material-icons.recordingIcon.fiber_smart_record {
+    color: var(--color-danger);
+}
+
+button.emby-tab-button.guide-date-tab-button.emby-button.emby-tab-button-active {
+    color: var(--color-highlight);
+}
+button.emby-tab-button.guide-date-tab-button.emby-button {
+    color: var(--color-muted);
+}
+
+span.newTvProgram.guideProgramIndicator,
+div.mediaInfoProgramAttribute.mediaInfoItem.newTvProgram {
+    background-color: var(--color-new);
+    color: var(--color-bg);
+}
+
+button.raised.btnPlay.block.formDialogFooterItem.button-submit.emby-button {
+    background-color: var(--color-play);
+    color: var(--color-bg);
+}
+
+button.guide-channelHeaderCell.itemAction {
+    background-color: var(--color-channel);
+    color: var(--color-text);
+}
+
+button.programCell.itemAction {
+    background-color: var(--color-program);
+    color: var(--color-highlight);
+    font-weight: 500;
+}
+
+button.programCell.itemAction.programCell-sports {
+    background-color: var(--color-sports) !important;
+    color: var(--color-bg);
+}
+
+button.programCell.itemAction.programCell-news {
+    background-color: var(--color-news) !important;
+    color: var(--color-bg);
+}
+
+button.programCell.itemAction.programCell-news span.programSecondaryTitle,
+button.programCell.itemAction.programCell-sports span.programSecondaryTitle {
+    color: var(--color-comment);
+}
+
+div.channelPrograms {
+    background-color: var(--color-empty);
+}
+
+::-webkit-scrollbar {
+    width: 10px;
+}
+::-webkit-scrollbar-track {
+    background: var(--color-bg);
+}
+::-webkit-scrollbar-thumb {
+    background-color: var(--color-scrollbar);
+    border-radius: 6px;
+}
+
+.emby-button,
+button {
+    transition:
+        filter 0.2s ease-in-out,
+        background-color 0.3s ease;
+}
+.emby-button:hover,
+button:hover {
+    filter: brightness(1.2);
+}
+
+.listItemImage.listItemImage-large.itemAction.lazy {
+    height: 110px;
+}
+.listItem-content {
+    height: 115px;
+}
+.secondary.listItem-overview.listItemBodyText {
+    height: 61px;
+    margin: 0;
+}
+
+.cardImageContainer {
+    background-color: var(--color-channel-card) !important;
+    color: var(--color-text) !important;
+}
+
+.cardImageContainer .cardText,
+.cardImageContainer .cardText-secondary,
+.cardImageContainer .cardText-primary {
+    color: var(--color-text) !important;
+}
+
+.cardImageContainer:hover {
+    filter: brightness(1.1);
+}
+
+*,
+*::before,
+*::after {
+    transition:
+        background-color 0.3s ease,
+        color 0.3s ease;
+}
