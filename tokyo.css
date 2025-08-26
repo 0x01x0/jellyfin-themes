@@ -54,50 +54,72 @@
     --dark-color-orange: #b07d48;
 
     /* Aliases */
-    --color-bg: var(--color-bg0);
-    --color-panel: var(--color-bg1);
-    --color-panel-deep: var(--color-bg2);
-    --color-accent: var(--color-fg);
-    --color-highlight: var(--light-color-fg);
-    --color-muted: var(--color-fg-muted);
-    --color-danger: var(--color-red);
-    --color-new: var(--dark-color-green);
-    --color-play: var(--color-blue);
-    --color-channel: var(--dark-color-bg_s);
-    --color-program: var(--color-panel);
-    --color-sports: var(--color-purple);
-    --color-news: var(--color-green);
-    --color-empty: var(--dark-color-bg_s);
-    --color-text: var(--color-fg);
-    --color-scrollbar: var(--color-purple);
-    --color-channel-card: var(--dark-color-bg_s);
+    --color-bg: var(--color-bg0); /* primary background */
+    --color-panel: var(--color-bg1); /* panels, drawers, inputs */
+    --color-panel-deep: var(--color-bg2); /* deep panel background */
+    --color-accent: var(--color-fg); /* muted accent text */
+    --color-highlight: var(--light-color-fg); /* brightest foreground */
+    --color-muted: var(--color-fg-muted); /* dim text */
+    --color-danger: var(--color-red); /* error / recording */
+    --color-new: var(--dark-color-green); /* “new” tag */
+    --color-play: var(--color-blue); /* play button */
+    --color-channel: var(--dark-color-bg_s); /* channel header bg */
+    --color-program: var(--color-panel); /* program cell bg */
+    --color-sports: var(--color-purple); /* sports program cell bg */
+    --color-news: var(--color-green); /* news program cell bg */
+    --color-empty: var(--dark-color-bg_s); /* empty space in guide */
+    --color-text: var(--color-fg); /* normal readable text */
+    --color-scrollbar: var(--color-purple); /* scrollbar thumb */
+    --color-channel-card: var(--dark-color-bg_s); /* channel card bg */
+
+    /* Font & Style */
+    --font-family: "Fira Sans", sans-serif; /* global font */
+    --radius: 8px; /* default border radius */
+    --shadow: 0 2px 6px rgba(0, 0, 0, 0.4); /* default shadow */
+
+    /* Buttons */
+    --button-bg: var(--color-blue); /* default button background */
+    --button-hover-brightness: 1.2; /* hover brightness factor */
 }
 
+/* -------------------------------------------------------
+    Base Styles
+-------------------------------------------------------- */
 html {
-    font-family: "Fira Sans", sans-serif;
+    font-family: var(--font-family);
     background-color: var(--color-bg);
     color: var(--color-text);
 }
 
+/* -------------------------------------------------------
+    Login Page Tweaks
+-------------------------------------------------------- */
 #loginPage .readOnlyContent,
 #loginPage form {
     max-width: 22em;
 }
+
 #loginPage h1 {
     display: none;
 }
+
 #loginPage .padded-left.padded-right.padded-bottom-page {
     margin-top: 50px;
 }
+
 #loginPage .raised.cancel.block.btnManual.emby-button,
 #loginPage .raised.cancel.block.btnForgotPassword.emby-button {
     display: none;
 }
 
+/* -------------------------------------------------------
+    General Interface Colors
+-------------------------------------------------------- */
 .backgroundContainer,
 .dialog {
     background-color: var(--color-bg) !important;
 }
+
 .skinHeader,
 .mainDrawer,
 .emby-input,
@@ -108,23 +130,38 @@ html {
 .paperList {
     background: var(--color-panel) !important;
 }
+
 .mainDrawer-scrollContainer,
 .dashboardGeneralForm {
     color: var(--color-accent);
 }
 
+/* Icons */
 span.material-icons {
     color: var(--color-accent);
 }
 
-span.material-icons.recordingIcon.fiber_manual_record,
-span.material-icons.recordingIcon.fiber_smart_record {
+span.material-icons.recordingIcon {
     color: var(--color-danger);
 }
 
+/* Checkboxes */
+span.checkboxOutline {
+    border-color: var(--color-accent) !important;
+}
+
+span.material-icons.checkboxIcon.checkboxIcon-checked.check {
+    background-color: var(--color-blue);
+    color: var(--color-highlight);
+}
+
+/* -------------------------------------------------------
+    Guide Styling
+-------------------------------------------------------- */
 button.emby-tab-button.guide-date-tab-button.emby-button.emby-tab-button-active {
     color: var(--color-highlight);
 }
+
 button.emby-tab-button.guide-date-tab-button.emby-button {
     color: var(--color-muted);
 }
@@ -170,39 +207,67 @@ div.channelPrograms {
     background-color: var(--color-empty);
 }
 
+/* -------------------------------------------------------
+    Scrollbars
+-------------------------------------------------------- */
 ::-webkit-scrollbar {
     width: 10px;
 }
+
 ::-webkit-scrollbar-track {
     background: var(--color-bg);
 }
+
 ::-webkit-scrollbar-thumb {
     background-color: var(--color-scrollbar);
     border-radius: 6px;
 }
 
+/* -------------------------------------------------------
+    Buttons & Transitions
+-------------------------------------------------------- */
 .emby-button,
 button {
     transition:
         filter 0.2s ease-in-out,
         background-color 0.3s ease;
 }
+
 .emby-button:hover,
 button:hover {
-    filter: brightness(1.2);
+    filter: brightness(var(--button-hover-brightness));
 }
 
+button.raised.button-submit.block {
+    background-color: var(--button-bg);
+}
+
+@media (hover: hover) and (pointer: fine) {
+    .paper-icon-button-light:hover:not(:disabled) {
+        background-color: var(--color-comment);
+        border-radius: var(--radius);
+    }
+}
+
+/* -------------------------------------------------------
+    Compact List Previews
+-------------------------------------------------------- */
 .listItemImage.listItemImage-large.itemAction.lazy {
     height: 110px;
 }
+
 .listItem-content {
     height: 115px;
 }
+
 .secondary.listItem-overview.listItemBodyText {
     height: 61px;
     margin: 0;
 }
 
+/* -------------------------------------------------------
+    Live TV Channel Card Styling
+-------------------------------------------------------- */
 .cardImageContainer {
     background-color: var(--color-channel-card) !important;
     color: var(--color-text) !important;
@@ -218,6 +283,9 @@ button:hover {
     filter: brightness(1.1);
 }
 
+/* -------------------------------------------------------
+    Smooth Global Transitions
+-------------------------------------------------------- */
 *,
 *::before,
 *::after {
