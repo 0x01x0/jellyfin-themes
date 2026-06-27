@@ -1,5 +1,10 @@
 /* ////////////////////////////////////////////////////////////////////
 //  Jellyfin Theme Template
+//
+//  Copy this file, fill in the empty color values in :root, and rename
+//  it to your theme. Everything below :root is shared structure — it is
+//  written entirely against the alias variables, so you normally only
+//  need to touch the palette at the top.
 /////////////////////////////////////////////////////////////////// */
 
 /* -------------------------------------------------------
@@ -9,54 +14,68 @@
 
 :root {
     /* Background scale */
-    --color-bg0: ;
-    --color-bg1: ;
-    --dark-color-bg_s: ;
+    --color-bg0: ; /* primary background */
+    --color-bg1: ; /* panels, drawers, inputs */
+    --color-bg2: ; /* deep / raised panel background */
+    --dark-color-bg_s: ; /* subtle fills, channel cards */
 
     /* Foreground & neutrals */
-    --color-fg: ;
-    --color-fg-muted: ;
-    --color-comment: ;
+    --color-fg: ; /* primary foreground */
+    --light-color-fg: ; /* brightest foreground, i.e. #fff */
+    --color-fg-muted: ; /* muted text */
+    --color-comment: ; /* subtle accents / comments */
 
-    /* Core color palette */
+    /* Core color palette (base / light / dark for each hue) */
     --color-red: ;
+    --light-color-red: ;
     --dark-color-red: ;
 
     --color-green: ;
+    --light-color-green: ;
     --dark-color-green: ;
 
     --color-yellow: ;
+    --light-color-yellow: ;
     --dark-color-yellow: ;
 
     --color-blue: ;
+    --light-color-blue: ;
     --dark-color-blue: ;
 
     --color-purple: ;
+    --light-color-purple: ;
     --dark-color-purple: ;
 
     --color-pink: ;
+    --light-color-pink: ;
     --dark-color-pink: ;
 
+    --color-aqua: ;
+    --light-color-aqua: ;
+    --dark-color-aqua: ;
+
     --color-orange: ;
+    --light-color-orange: ;
     --dark-color-orange: ;
 
-    /* Convenience Aliases */
-    --color-bg: var(--color-bg0);
-    --color-panel: var(--color-bg1);
-    --color-accent: var(--color-fg);
-    --color-highlight: ; /* i.e. #fff */
-    --color-muted: var(--color-fg-muted);
-    --color-danger: var(--color-red);
-    --color-new: var(--color-green);
-    --color-play: var(--color-blue);
-    --color-channel: var(--color-comment);
-    --color-program: var(--color-bg1);
-    --color-sports: var(--color-purple);
-    --color-news: var(--color-green);
-    --color-empty: var(--dark-color-bg_s);
-    --color-text: var(--color-fg);
-    --color-scrollbar: var(--color-purple);
-    --color-channel-card: var(--dark-color-bg_s);
+    /* Convenience Aliases — the rest of the file uses only these */
+    --color-bg: var(--color-bg0); /* primary background */
+    --color-panel: var(--color-bg1); /* panels, drawers, inputs */
+    --color-panel-deep: var(--color-bg2); /* deep panel background */
+    --color-accent: var(--color-fg); /* muted accent text */
+    --color-highlight: var(--light-color-fg); /* brightest foreground */
+    --color-muted: var(--color-fg-muted); /* dim text */
+    --color-danger: var(--color-red); /* error / recording */
+    --color-new: var(--dark-color-green); /* "new" tag */
+    --color-play: var(--color-blue); /* play button */
+    --color-channel: var(--color-comment); /* channel header bg */
+    --color-program: var(--color-panel); /* program cell bg */
+    --color-sports: var(--color-purple); /* sports program cell bg */
+    --color-news: var(--color-green); /* news program cell bg */
+    --color-empty: var(--dark-color-bg_s); /* empty space in guide */
+    --color-text: var(--color-fg); /* normal readable text */
+    --color-scrollbar: var(--color-purple); /* scrollbar thumb */
+    --color-channel-card: var(--dark-color-bg_s); /* channel card bg */
 
     /* Font & Style */
     --font-family: "Fira Sans", sans-serif; /* global font */
@@ -64,7 +83,7 @@
     --shadow: 0 2px 6px rgba(0, 0, 0, 0.4); /* default shadow */
 
     /* Buttons */
-    --button-bg: var(--dark-color-blue); /* default button background */
+    --button-bg: var(--color-blue); /* default button background */
     --button-hover-brightness: 1.2; /* hover brightness factor */
 }
 
@@ -128,9 +147,58 @@ span.material-icons.recordingIcon {
     color: var(--color-danger);
 }
 
+/* Checkboxes */
+span.checkboxOutline {
+    border-color: var(--color-accent) !important;
+}
+
+span.material-icons.checkboxIcon.checkboxIcon-checked.check {
+    background-color: var(--color-blue);
+    color: var(--color-highlight);
+}
+
+/* -------------------------------------------------------
+    Rounded Corners & Elevation
+    Driven by --radius and --shadow so a theme can reshape
+    the whole UI from those two variables.
+-------------------------------------------------------- */
+.cardBox,
+.dialog,
+.paperList,
+.actionSheetContent,
+.navMenuOption {
+    border-radius: var(--radius);
+}
+
+.cardBox,
+.dialog,
+.paperList {
+    box-shadow: var(--shadow);
+}
+
+.cardImageContainer,
+.cardOverlayContainer,
+.card .cardScalable,
+.listItemImage,
+.emby-input,
+.emby-textarea,
+.emby-select {
+    border-radius: var(--radius);
+    overflow: hidden;
+}
+
 /* -------------------------------------------------------
     Guide Styling
 -------------------------------------------------------- */
+/* Square cells in the TV guide (override Jellyfin's rounding) */
+.programCell,
+button.programCell.itemAction,
+.guide-channelHeaderCell,
+button.guide-channelHeaderCell.itemAction,
+.guide-channelTimeslotHeader {
+    border-radius: 0 !important;
+}
+
 button.emby-tab-button.guide-date-tab-button.emby-button.emby-tab-button-active {
     color: var(--color-highlight);
 }
@@ -195,12 +263,21 @@ div.channelPrograms {
 
 /* -------------------------------------------------------
     Buttons & Transitions
+    One scoped transition rule for the surfaces that actually
+    change color/brightness — avoids a universal * selector.
 -------------------------------------------------------- */
 .emby-button,
-button {
+button,
+.cardBox,
+.cardImageContainer,
+.listItem,
+.navMenuOption,
+.emby-input,
+.emby-select {
     transition:
         filter 0.2s ease-in-out,
-        background-color 0.3s ease;
+        background-color 0.3s ease,
+        color 0.3s ease;
 }
 
 .emby-button:hover,
@@ -251,15 +328,4 @@ button.raised.button-submit.block {
 
 .cardImageContainer:hover {
     filter: brightness(1.1);
-}
-
-/* -------------------------------------------------------
-    Smooth Global Transitions
--------------------------------------------------------- */
-*,
-*::before,
-*::after {
-    transition:
-        background-color 0.3s ease,
-        color 0.3s ease;
 }

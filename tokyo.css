@@ -156,8 +156,45 @@ span.material-icons.checkboxIcon.checkboxIcon-checked.check {
 }
 
 /* -------------------------------------------------------
+    Rounded Corners & Elevation
+-------------------------------------------------------- */
+.cardBox,
+.dialog,
+.paperList,
+.actionSheetContent,
+.navMenuOption {
+    border-radius: var(--radius);
+}
+
+.cardBox,
+.dialog,
+.paperList {
+    box-shadow: var(--shadow);
+}
+
+.cardImageContainer,
+.cardOverlayContainer,
+.card .cardScalable,
+.listItemImage,
+.emby-input,
+.emby-textarea,
+.emby-select {
+    border-radius: var(--radius);
+    overflow: hidden;
+}
+
+/* -------------------------------------------------------
     Guide Styling
 -------------------------------------------------------- */
+/* Square cells in the TV guide (override Jellyfin's rounding) */
+.programCell,
+button.programCell.itemAction,
+.guide-channelHeaderCell,
+button.guide-channelHeaderCell.itemAction,
+.guide-channelTimeslotHeader {
+    border-radius: 0 !important;
+}
+
 button.emby-tab-button.guide-date-tab-button.emby-button.emby-tab-button-active {
     color: var(--color-highlight);
 }
@@ -227,10 +264,17 @@ div.channelPrograms {
     Buttons & Transitions
 -------------------------------------------------------- */
 .emby-button,
-button {
+button,
+.cardBox,
+.cardImageContainer,
+.listItem,
+.navMenuOption,
+.emby-input,
+.emby-select {
     transition:
         filter 0.2s ease-in-out,
-        background-color 0.3s ease;
+        background-color 0.3s ease,
+        color 0.3s ease;
 }
 
 .emby-button:hover,
@@ -281,15 +325,4 @@ button.raised.button-submit.block {
 
 .cardImageContainer:hover {
     filter: brightness(1.1);
-}
-
-/* -------------------------------------------------------
-    Smooth Global Transitions
--------------------------------------------------------- */
-*,
-*::before,
-*::after {
-    transition:
-        background-color 0.3s ease,
-        color 0.3s ease;
 }
