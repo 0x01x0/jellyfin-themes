@@ -1,0 +1,373 @@
+/* ////////////////////////////////////////////////////////////////////
+//  Obsidian Jellyfin Theme — modern dark with rounded corners
+/////////////////////////////////////////////////////////////////// */
+
+/* -------------------------------------------------------
+    Import Custom Font
+-------------------------------------------------------- */
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap");
+
+:root {
+    /* Background scale */
+    --color-bg0: #0d0f14; /* primary background */
+    --color-bg1: #161a23; /* panels, drawers, inputs */
+    --color-bg2: #1e2330; /* raised surfaces */
+    --dark-color-bg_s: #2a3040; /* subtle fills */
+
+    /* Foreground & Neutrals */
+    --color-fg: #d7dce5;
+    --light-color-fg: #f4f6fa;
+    --color-fg-muted: #8b93a7;
+    --color-comment: #5a6276;
+
+    /* Colors */
+    --color-red: #ff6b81;
+    --light-color-red: #ff97a6;
+    --dark-color-red: #d94860;
+
+    --color-green: #5fd28a;
+    --light-color-green: #87e3a8;
+    --dark-color-green: #3fae6b;
+
+    --color-yellow: #f2c46b;
+    --light-color-yellow: #ffd98a;
+    --dark-color-yellow: #d6a248;
+
+    --color-blue: #6aa8ff;
+    --light-color-blue: #93c1ff;
+    --dark-color-blue: #3d82e6;
+
+    --color-purple: #7c5cff;
+    --light-color-purple: #a98dff;
+    --dark-color-purple: #5e3fe0;
+
+    --color-pink: #ff79c6;
+    --light-color-pink: #ffaad9;
+    --dark-color-pink: #e052a3;
+
+    --color-aqua: #46d3c8;
+    --light-color-aqua: #7be7df;
+    --dark-color-aqua: #29b0a6;
+
+    --color-orange: #ff9e64;
+    --light-color-orange: #ffb98c;
+    --dark-color-orange: #e07a3c;
+
+    /* Aliases */
+    --color-bg: var(--color-bg0); /* primary background */
+    --color-panel: var(--color-bg1); /* panels, drawers, inputs */
+    --color-panel-deep: var(--color-bg2); /* deep panel background */
+    --color-accent: var(--color-fg); /* muted accent text */
+    --color-highlight: var(--light-color-fg); /* brightest foreground */
+    --color-muted: var(--color-fg-muted); /* dim text */
+    --color-danger: var(--color-red); /* error / recording */
+    --color-new: var(--dark-color-green); /* "new" tag */
+    --color-play: var(--color-purple); /* play button */
+    --color-channel: var(--dark-color-bg_s); /* channel header bg */
+    --color-program: var(--color-panel); /* program cell bg */
+    --color-sports: var(--color-blue); /* sports program cell bg */
+    --color-news: var(--color-green); /* news program cell bg */
+    --color-empty: var(--dark-color-bg_s); /* empty space in guide */
+    --color-text: var(--color-fg); /* normal readable text */
+    --color-scrollbar: var(--color-purple); /* scrollbar thumb */
+    --color-channel-card: var(--dark-color-bg_s); /* channel card bg */
+
+    /* Font & Style */
+    --font-family: "Inter", sans-serif; /* global font */
+    --radius: 14px; /* default border radius */
+    --radius-lg: 20px; /* large radius for cards & dialogs */
+    --radius-pill: 999px; /* pill radius for buttons & chips */
+    --shadow: 0 6px 18px rgba(0, 0, 0, 0.45); /* default shadow */
+
+    /* Buttons */
+    --button-bg: var(--color-purple); /* default button background */
+    --button-hover-brightness: 1.15; /* hover brightness factor */
+}
+
+/* -------------------------------------------------------
+    Base Styles
+-------------------------------------------------------- */
+html {
+    font-family: var(--font-family);
+    background-color: var(--color-bg);
+    color: var(--color-text);
+}
+
+/* -------------------------------------------------------
+    Login Page Tweaks
+-------------------------------------------------------- */
+#loginPage .readOnlyContent,
+#loginPage form {
+    max-width: 22em;
+}
+
+#loginPage h1 {
+    display: none;
+}
+
+#loginPage .padded-left.padded-right.padded-bottom-page {
+    margin-top: 50px;
+}
+
+#loginPage .raised.cancel.block.btnManual.emby-button,
+#loginPage .raised.cancel.block.btnForgotPassword.emby-button {
+    display: none;
+}
+
+/* -------------------------------------------------------
+    General Interface Colors
+-------------------------------------------------------- */
+.backgroundContainer,
+.dialog {
+    background-color: var(--color-bg) !important;
+}
+
+.skinHeader,
+.mainDrawer,
+.emby-input,
+.emby-textarea,
+.emby-select,
+.navMenuOption-selected,
+.cardBox,
+.paperList {
+    background: var(--color-panel) !important;
+}
+
+.mainDrawer-scrollContainer,
+.dashboardGeneralForm {
+    color: var(--color-accent);
+}
+
+/* Icons */
+span.material-icons {
+    color: var(--color-accent);
+}
+
+span.material-icons.recordingIcon {
+    color: var(--color-danger);
+}
+
+/* Checkboxes */
+span.checkboxOutline {
+    border-color: var(--color-accent) !important;
+}
+
+span.material-icons.checkboxIcon.checkboxIcon-checked.check {
+    background-color: var(--color-purple);
+    color: var(--color-highlight);
+}
+
+/* -------------------------------------------------------
+    Rounded Corners — the core of this theme
+-------------------------------------------------------- */
+/* Cards & posters */
+.cardBox,
+.cardImageContainer,
+.cardOverlayContainer,
+.cardImage,
+.card .cardScalable,
+.listItemImage,
+.itemBackdrop,
+.userItemsContainer .card {
+    border-radius: var(--radius-lg) !important;
+    overflow: hidden;
+}
+
+/* Soft elevation on raised surfaces */
+.cardBox,
+.dialog,
+.formDialog,
+.paperList {
+    box-shadow: var(--shadow);
+}
+
+/* Panels, drawers, dialogs & list surfaces */
+.dialog,
+.formDialog,
+.paperList,
+.navMenuOption,
+.actionSheetContent,
+.emby-scrollbuttons,
+.listItem,
+.dashboardSection {
+    border-radius: var(--radius) !important;
+}
+
+/* Inputs & selects */
+.emby-input,
+.emby-textarea,
+.emby-select,
+.searchfields-icon,
+.inputContainer .emby-input {
+    border-radius: var(--radius) !important;
+}
+
+/* Header & drawer get a soft rounded edge */
+.mainDrawer {
+    border-top-right-radius: var(--radius-lg);
+    border-bottom-right-radius: var(--radius-lg);
+}
+
+/* Images inside details pages */
+.detailImageContainer .card,
+.detailImageContainer .cardImage,
+.personImage,
+.chapterThumbContainer {
+    border-radius: var(--radius) !important;
+    overflow: hidden;
+}
+
+/* -------------------------------------------------------
+    Guide Styling
+-------------------------------------------------------- */
+/* Square cells in the TV guide (override Jellyfin's rounding) */
+.programCell,
+button.programCell.itemAction,
+.guide-channelHeaderCell,
+button.guide-channelHeaderCell.itemAction,
+.guide-channelTimeslotHeader {
+    border-radius: 0 !important;
+}
+
+button.emby-tab-button.guide-date-tab-button.emby-button.emby-tab-button-active {
+    color: var(--color-highlight);
+}
+
+button.emby-tab-button.guide-date-tab-button.emby-button {
+    color: var(--color-muted);
+}
+
+span.newTvProgram.guideProgramIndicator,
+div.mediaInfoProgramAttribute.mediaInfoItem.newTvProgram {
+    background-color: var(--color-new);
+    color: var(--color-bg);
+    border-radius: var(--radius-pill);
+}
+
+button.raised.btnPlay.block.formDialogFooterItem.button-submit.emby-button {
+    background-color: var(--color-play);
+    color: var(--color-highlight);
+}
+
+button.guide-channelHeaderCell.itemAction {
+    background-color: var(--color-channel);
+    color: var(--color-text);
+}
+
+button.programCell.itemAction {
+    background-color: var(--color-program);
+    color: var(--color-highlight);
+    font-weight: 500;
+    border-radius: var(--radius);
+}
+
+button.programCell.itemAction.programCell-sports {
+    background-color: var(--color-sports) !important;
+    color: var(--color-bg);
+}
+
+button.programCell.itemAction.programCell-news {
+    background-color: var(--color-news) !important;
+    color: var(--color-bg);
+}
+
+button.programCell.itemAction.programCell-news span.programSecondaryTitle,
+button.programCell.itemAction.programCell-sports span.programSecondaryTitle {
+    color: var(--color-comment);
+}
+
+div.channelPrograms {
+    background-color: var(--color-empty);
+}
+
+/* -------------------------------------------------------
+    Scrollbars
+-------------------------------------------------------- */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--color-bg);
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: var(--color-scrollbar);
+    border-radius: var(--radius-pill);
+}
+
+/* -------------------------------------------------------
+    Buttons & Transitions
+-------------------------------------------------------- */
+.emby-button,
+button,
+.cardBox,
+.cardImageContainer,
+.listItem,
+.navMenuOption,
+.emby-input,
+.emby-select {
+    transition:
+        filter 0.2s ease-in-out,
+        background-color 0.3s ease,
+        color 0.3s ease;
+}
+
+.emby-button:hover,
+button:hover {
+    filter: brightness(var(--button-hover-brightness));
+}
+
+/* Pill-shaped primary buttons for a modern feel */
+button.raised.button-submit.block,
+button.raised.button-submit {
+    background-color: var(--button-bg);
+    color: var(--color-highlight);
+    border-radius: var(--radius-pill);
+}
+
+.emby-button.raised,
+.button-flat {
+    border-radius: var(--radius-pill);
+}
+
+@media (hover: hover) and (pointer: fine) {
+    .paper-icon-button-light:hover:not(:disabled) {
+        background-color: var(--color-comment);
+        border-radius: var(--radius-pill);
+    }
+}
+
+/* -------------------------------------------------------
+    Compact List Previews
+-------------------------------------------------------- */
+.listItemImage.listItemImage-large.itemAction.lazy {
+    height: 110px;
+}
+
+.listItem-content {
+    height: 115px;
+}
+
+.secondary.listItem-overview.listItemBodyText {
+    height: 61px;
+    margin: 0;
+}
+
+/* -------------------------------------------------------
+    Live TV Channel Card Styling
+-------------------------------------------------------- */
+.cardImageContainer {
+    background-color: var(--color-channel-card) !important;
+    color: var(--color-text) !important;
+}
+
+.cardImageContainer .cardText,
+.cardImageContainer .cardText-secondary,
+.cardImageContainer .cardText-primary {
+    color: var(--color-text) !important;
+}
+
+.cardImageContainer:hover {
+    filter: brightness(1.1);
+}

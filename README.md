@@ -44,6 +44,10 @@ Jellyfin Themes is a collection of custom CSS stylesheets that instantly transfo
 
     @import url('https://derektata.github.io/jellyfin-themes/gruvbox-dark.css')
 
+### Obsidian
+
+    @import url('https://derektata.github.io/jellyfin-themes/obsidian.css')
+
 ### One Dark
 <img src="./examples/one-dark.png" alt="One Dark" width="600">
 
